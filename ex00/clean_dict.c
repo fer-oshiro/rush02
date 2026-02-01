@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_dict.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpedro-s <lpedro-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 09:48:24 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 10:42:26 by lpedro-s         ###   ########.fr       */
+/*   Updated: 2026/02/01 13:42:20 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_clean_dict(t_translate *translate_store)
 	if (!translate_store)
 		return ;
 	i = 0;
-	while (translate_store[i].number != NULL)
+	while (!translate_store[i].number && !translate_store[i].extensive)
 	{
 		if (translate_store[i].number != NULL)
 			free(translate_store[i].number);

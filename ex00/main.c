@@ -6,7 +6,7 @@
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 10:25:59 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 11:32:34 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 14:24:20 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int	main(int argc, char **argv)
 		ft_error_dict();
 		return (0);
 	}
-	solve(num, translate_store);
+	int g_first = 1;
+	solve(num, translate_store, &g_first);
 }
