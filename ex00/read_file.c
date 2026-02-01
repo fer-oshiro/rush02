@@ -22,7 +22,6 @@ char *read_line(int fd) {
     char c;
     int i = 0;
     int bytes;
-	int current_line = 0;
     
 	if (!line) return (NULL);
 
@@ -53,6 +52,8 @@ char *ft_extract_number(char *str)
 
 	len = ft_str_len_space(str, ':');
 	number = (char *)malloc((len + 1) * sizeof(char));
+	if (!number)
+		return ("");
 	index = 0;
 	while (*str != ':')
 	{
@@ -72,7 +73,6 @@ char *ft_extract_number(char *str)
 char *ft_extract_number_ext(char *str)
 {
 	char *number_ext;
-	int len;
 	int index;
 	int index_start;
 	int index_end;
@@ -134,7 +134,6 @@ t_translate ft_parse_line(char *str)
 int ft_read_file(char *file)
 {
 	int fd;
-	int lines;
 	int total_lines;
 	t_translate *translate_store;
 
@@ -148,10 +147,11 @@ int ft_read_file(char *file)
 	while (j < total_lines)
 	{
 		translate_store[j] = ft_parse_line(read_line(fd));
-		if (translate_store[j].number[0] == '\0')
+		if (translate_store[j].number[0] == '\0' || translate_store[j].extensive == NULL)
+		{
+			close(fd);
 			return (0);
-		if (!translate_store[j].extensive)
-			return (0);
+		}
 		j++;
 	}
 
