@@ -6,7 +6,7 @@
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 11:11:41 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 15:38:32 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 15:45:48 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,7 @@ char	*ft_get_word(t_translate *dict, char *num)
 	return (NULL);
 }
 
-void	ft_len_3(t_translate *dict, char num, int *g_first)
-{
-	char	d[2] = {num, '\0'};
 
-	ft_print_word(ft_get_word(dict, d), g_first);
-	ft_print_word(ft_get_word(dict, "100"), g_first);
-}
-
-void	ft_len_2(t_translate *dict, char num, int *g_first)
-{
-	char	tens[3] = {num, '0', '\0'};
-
-	ft_print_word(ft_get_word(dict, tens), g_first);
-}
-
-void	ft_len_1(t_translate *dict, char num, int *g_first)
-{
-	char	d[2] = {num, '\0'};
-
-	ft_print_word(ft_get_word(dict, d), g_first);
-}
 
 void	handle_3_digits(char *num, t_translate *dict, int *g_first)
 {
@@ -114,27 +94,20 @@ void	ft_first_len(int len, int *first_len)
 	if (*first_len == 0)
 		*first_len = 3;
 }
-
-void	solve(char *num, t_translate *dict, int *g_first)
+void	process_block(char *num, int len, t_translate *dict, int *g_first)
 {
-	int		len;
-	int		first_len;
-	char	prefix[4] = {0};
+	char	prefix[4];
 	int		i;
-	char	*rest;
+	int		f_len;
 
-	len = ft_str_len(num);
-	first_len = 0;
-	if (len == 0)
-		return ;
-	if (ft_strcmp(num, "0") == 0)
-	{
-		ft_print_word(ft_get_word(dict, "0"), g_first);
-		return ;
-	}
-	ft_first_len(len, &first_len);
 	i = 0;
-	while (i < first_len)
+	f_len = len % 3;
+	if (f_len == 0)
+		f_len = 3;
+	while (i < 4)
+		prefix[i++] = 0;
+	i = 0;
+	while (i < f_len)
 	{
 		prefix[i] = num[i];
 		i++;
@@ -142,9 +115,29 @@ void	solve(char *num, t_translate *dict, int *g_first)
 	if (ft_strcmp(prefix, "000") != 0)
 	{
 		handle_3_digits(prefix, dict, g_first);
-		ft_print_zeros(len, first_len, dict, g_first);
+		ft_print_zeros(len, f_len, dict, g_first);
 	}
-	rest = num + first_len;
+}
+
+void	solve(char *num, t_translate *dict, int *g_first)
+{
+	int		len;
+	int		f_len;
+	char	*rest;
+
+	len = ft_str_len(num);
+	if (len == 0)
+		return ;
+	if (ft_strcmp(num, "0") == 0)
+	{
+		ft_print_word(ft_get_word(dict, "0"), g_first);
+		return ;
+	}
+	process_block(num, len, dict, g_first);
+	f_len = len % 3;
+	if (f_len == 0)
+		f_len = 3;
+	rest = num + f_len;
 	while (*rest == '0')
 		rest++;
 	if (*rest)
