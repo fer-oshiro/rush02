@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpedro-s <lpedro-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 09:21:38 by lpedro-s          #+#    #+#             */
-/*   Updated: 2026/02/01 09:22:51 by lpedro-s         ###   ########.fr       */
+/*   Updated: 2026/02/01 10:20:50 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,11 @@ int	ft_str_len_space(char *str, char sep)
 int	ft_str_len(char *str)
 {
 	int	len;
-
 	len = 0;
+
+	if (!str)
+		return (0);
+	
 	while (*str)
 	{
 		len++;

@@ -6,7 +6,7 @@
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 09:11:49 by lpedro-s          #+#    #+#             */
-/*   Updated: 2026/02/01 09:44:53 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 10:22:02 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ char	*ft_extract_number(char *str)
 	int		index;
 
 	if (!ft_number_validation(str))
-		return ("");
+		return (NULL);
 	len = ft_str_len_space(str, ':');
 	number = (char *)malloc((len + 1) * sizeof(char));
 	if (!number)
-		return ("");
+		return (NULL);
 	index = 0;
 	while (*str != ':')
 	{
@@ -90,6 +90,7 @@ t_translate	ft_parse_line(char *str)
 {
 	t_translate	entry;
 
+	
 	if (!ft_find_char(str, ':'))
 	{
 		entry.number = NULL;
@@ -116,17 +117,20 @@ int	ft_read_file(char *file)
 	j = 0;
 	while (j < total_lines)
 	{
-		line = read_line(fd);
 		if (!line)
 		{
+			translate_store[j].number = NULL;
+			ft_clean_dict(translate_store);
 			close(fd);
 			return (0);
 		}
+		line = read_line(fd);
 		translate_store[j] = ft_parse_line(line);
 		free(line);
-		if (translate_store[j].number[0] == '\0'
-			|| translate_store[j].extensive == NULL)
+		if (!translate_store[j].number
+			|| !translate_store[j].extensive)
 		{
+			ft_clean_dict(translate_store);
 			close(fd);
 			return (0);
 		}

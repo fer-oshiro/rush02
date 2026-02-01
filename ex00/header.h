@@ -6,7 +6,7 @@
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 10:27:19 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 09:08:34 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 10:06:44 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int			ft_number_ext_validation(char *str);
 int			ft_str_num_ext_fullsize(char *str);
 int			ft_str_len(char *str);
 char		*ft_extract_number_ext(char *str);
+void		ft_bzero_char(void *s, size_t n);
+void		ft_bzero_int(void *s, size_t n);
 
 typedef struct s_translate
 {
@@ -41,5 +43,7 @@ typedef struct s_translate
 	char	*extensive;
 	int		size;
 }			t_translate;
+
+void 		ft_clean_dict(t_translate *translate_store);
 
 #endif
