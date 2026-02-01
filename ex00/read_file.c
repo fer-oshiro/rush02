@@ -6,7 +6,7 @@
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 09:11:49 by lpedro-s          #+#    #+#             */
-/*   Updated: 2026/02/01 09:36:48 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 09:44:53 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int	ft_read_file(char *file)
 	int			total_lines;
 	t_translate	*translate_store;
 	int			j;
+	char	*line;
 
 	total_lines = count_lines(file);
 	translate_store = (t_translate *)malloc((total_lines + 1)
@@ -115,7 +116,14 @@ int	ft_read_file(char *file)
 	j = 0;
 	while (j < total_lines)
 	{
-		translate_store[j] = ft_parse_line(read_line(fd));
+		line = read_line(fd);
+		if (!line)
+		{
+			close(fd);
+			return (0);
+		}
+		translate_store[j] = ft_parse_line(line);
+		free(line);
 		if (translate_store[j].number[0] == '\0'
 			|| translate_store[j].extensive == NULL)
 		{
