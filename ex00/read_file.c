@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpedro-s <lpedro-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 09:11:49 by lpedro-s          #+#    #+#             */
-/*   Updated: 2026/02/01 10:44:27 by lpedro-s         ###   ########.fr       */
+/*   Updated: 2026/02/01 11:04:33 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ t_translate	*ft_read_file(char *file)
 		}
 		j++;
 	}
+	ft_sort_dict(translate_store, total_lines);
 	close(fd);
 	return (translate_store);
 }
