@@ -6,7 +6,7 @@
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 10:27:19 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 17:04:16 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 18:50:51 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-
-// apagar lib printf
-# include <stdio.h>
 
 typedef struct s_translate
 {
@@ -57,5 +54,6 @@ void		ft_len_3(t_translate *dict, char num, int *g_first);
 void		ft_print_word(char *word, int *g_first);
 void		ft_print_zeros(int len, int f_len, t_translate *dict, int *g_f);
 int			validate(char *num, t_translate *dict);
+int			ft_putstr(char *str);
 
 #endif

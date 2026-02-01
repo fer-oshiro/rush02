@@ -5,7 +5,7 @@ CFLAGS  = -Wall -Wextra -Werror
 SRCS    = clean_dict.c error.c extract_number_ext.c \
 			ft_strncpy.c ft_write_len.c ft_write_number.c \
 			get_args.c main.c read_file.c sort_dict.c utils.c \
-			validation.c verification.c write.c
+			validation.c verification.c write.c ft_putstr.c
 OBJS    = $(SRCS:.c=.o)
 
 all: $(NAME)

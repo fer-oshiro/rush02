@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 09:09:29 by lpedro-s          #+#    #+#             */
-/*   Updated: 2026/02/01 18:50:17 by fsayuri-         ###   ########.fr       */
+/*   Created: 2026/02/01 18:49:38 by fsayuri-          #+#    #+#             */
+/*   Updated: 2026/02/01 18:49:58 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	ft_error_input(void)
+int	ft_putstr(char *str)
 {
-	write(1, "Error\n", 6);
-}
+	int	i;
 
-void	ft_error_dict(void)
-{
-	write(1, "Dict Error\n", 11);
+	i = 0;
+	while (str[i])
+	{
+		write (1, &str[i], 1);
+		i++;
+	}
+	return (0);
 }
