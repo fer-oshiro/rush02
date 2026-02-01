@@ -6,46 +6,112 @@
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 11:11:41 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 11:21:56 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 11:47:24 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-char *ft_get_word(t_translate *dict, char *number)
+int g_first = 1; // Variável global para controlar espaços
+
+void	ft_print_word(char *word)
 {
-    int i = 0;
-    while (dict[i].number != NULL)
-    {
-        if (ft_strcmp(dict[i].number, number) == 0)
-            return (dict[i].extensive);
-        i++;
-    }
-    return (NULL);
+	if (!word)
+		return ;
+	if (!g_first)
+		write(1, " ", 1);
+	ft_putstr(word);
+	g_first = 0;
 }
 
-void ft_print_expanded(char *num, t_translate *dict)
+char	*ft_get_word(t_translate *dict, char *num)
 {
-    int len = ft_str_len(num);
+	int i = 0;
+	while (dict[i].number)
+	{
+		if (ft_strcmp(dict[i].number, num) == 0)
+			return (dict[i].extensive);
+		i++;
+	}
+	return (NULL);
+}
 
-    if (len == 1 || (len == 2 && num[0] == '1')) {
-        // Trata 0-9 e 10-19 (valores diretos no dicionário)
-        printf("%s", ft_get_word(dict, num));
-    }
-    else if (len == 2) {
-        // Trata 20-99: imprime "20", depois o resto "3"
-        char tens[3] = {num[0], '0', '\0'};
-        printf("%s ", ft_get_word(dict, tens));
-        if (num[1] != '0')
-            ft_print_expanded(&num[1], dict);
-    }
-    else if (len == 3) {
-        // Trata 100-999: imprime "1", depois "100", depois o resto "23"
-        char digit[2] = {num[0], '\0'};
-        ft_print_expanded(digit, dict);
-        printf(" %s ", ft_get_word(dict, "100"));
-        if (ft_strcmp(&num[1], "00") != 0)
-            ft_print_expanded(&num[1], dict);
-    }
-    // Para números maiores (milhares, milhões), a lógica segue o mesmo padrão de grupos de 3
+// Lida com grupos de até 3 dígitos (ex: "123")
+void	handle_3_digits(char *num, t_translate *dict)
+{
+	int len = 0;
+	while (num[len]) len++;
+
+	if (len == 3 && num[0] != '0')
+	{
+		char d[2] = {num[0], '\0'};
+		ft_print_word(ft_get_word(dict, d));
+		ft_print_word(ft_get_word(dict, "100"));
+		num++; // pula para as dezenas
+		len--;
+	}
+	if (len == 2 && num[0] == '1') // 10-19
+	{
+		ft_print_word(ft_get_word(dict, num));
+		return ;
+	}
+	if (len == 2 && num[0] != '0') // 20-99
+	{
+		char tens[3] = {num[0], '0', '\0'};
+		ft_print_word(ft_get_word(dict, tens));
+		num++;
+		len--;
+	}
+	if (len == 1 && num[0] != '0') // 1-9
+	{
+		char d[2] = {num[0], '\0'};
+		ft_print_word(ft_get_word(dict, d));
+	}
+}
+
+void	solve(char *num, t_translate *dict)
+{
+	int len = 0;
+	while (num[len]) len++;
+	
+	if (len == 0) return ;
+	if (ft_strcmp(num, "0") == 0) {
+		ft_print_word(ft_get_word(dict, "0"));
+		return ;
+	}
+
+	int first_len = len % 3;
+	if (first_len == 0) first_len = 3;
+
+	char prefix[4] = {0};
+	int i = 0;
+	while (i < first_len) {
+		prefix[i] = num[i];
+		i++;
+	}
+
+	// Se o grupo não for "000", processa ele e a potência
+	if (ft_strcmp(prefix, "000") != 0)
+	{
+		handle_3_digits(prefix, dict);
+		if (len > 3)
+		{
+			// Achar potência: '1' seguido de (len - first_len) zeros
+			int power_size = len - first_len + 1;
+			int k = 0;
+			while (dict[k].number)
+			{
+				if (dict[k].size == power_size && dict[k].number[0] == '1')
+				{
+					ft_print_word(dict[k].extensive);
+					break ;
+				}
+				k++;
+			}
+		}
+	}
+	
+	char *rest = num + first_len;
+	while (*rest == '0') rest++; // Pula blocos de zero
+	if (*rest) solve(rest, dict);
 }
