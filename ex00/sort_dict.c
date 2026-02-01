@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_dict.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpedro-s <lpedro-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 10:31:42 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 10:35:24 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 10:37:09 by lpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,7 @@ int	ft_strcmp(char *s1, char *s2)
 	int	i;
 
 	i = 0;
-	while (s1[i] != '\0')
-	{
-		if (s2[i] == '\0')
-			return (s1[i]);
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
+	while (s1[i] != '\0' && s1[i] == s2[i])
 		i++;
-	}
-	return (-s2[i]);
+	return (s1[i] - s2[i]);
 }
