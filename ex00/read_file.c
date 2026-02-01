@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpedro-s <lpedro-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 09:11:49 by lpedro-s          #+#    #+#             */
-/*   Updated: 2026/02/01 09:17:49 by lpedro-s         ###   ########.fr       */
+/*   Updated: 2026/02/01 09:36:48 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ int	count_lines(char *file)
 
 	fd = open(file, O_RDONLY);
 	current_line = 0;
-	while ((bytes = read(fd, &c, 1)) > 0)
+	bytes = read(fd, &c, 1);
+	while (bytes > 0)
 	{
 		if (c == '\n')
 			current_line++;
+		bytes = read(fd, &c, 1);
 	}
 	close(fd);
 	return (current_line);
@@ -41,11 +43,13 @@ char	*read_line(int fd)
 	i = 0;
 	if (!line)
 		return (NULL);
-	while ((bytes = read(fd, &c, 1)) > 0)
+	bytes = read(fd, &c, 1);
+	while (bytes > 0)
 	{
 		line[i++] = c;
 		if (c == '\n')
 			break ;
+		bytes = read(fd, &c, 1);
 	}
 	if (bytes <= 0 && i == 0)
 	{
