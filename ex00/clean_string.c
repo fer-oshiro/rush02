@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   clean_string.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 18:49:38 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 19:58:23 by fsayuri-         ###   ########.fr       */
+/*   Created: 2026/02/01 19:35:02 by fsayuri-          #+#    #+#             */
+/*   Updated: 2026/02/01 19:59:29 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
-
-int	ft_putstr(char *str)
+void	ft_clean_string(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (i < 1000)
 	{
-		write (1, &str[i], 1);
+		str[i] = '\0';
 		i++;
 	}
-	return (0);
 }

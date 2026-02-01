@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   is_empty_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 18:49:38 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 19:58:23 by fsayuri-         ###   ########.fr       */
+/*   Created: 2026/02/01 19:23:25 by fsayuri-          #+#    #+#             */
+/*   Updated: 2026/02/01 19:59:14 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int	ft_putstr(char *str)
+int	ft_is_empty_string(char *str)
 {
-	int	i;
+	int	is_empty;
 
-	i = 0;
-	while (str[i])
+	is_empty = 1;
+	while (*str)
 	{
-		write (1, &str[i], 1);
-		i++;
+		if (!ft_is_space(*str))
+			is_empty = 0;
+		str++;
 	}
-	return (0);
+	return (is_empty);
 }

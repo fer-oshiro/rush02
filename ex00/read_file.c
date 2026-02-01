@@ -6,7 +6,7 @@
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 09:11:49 by lpedro-s          #+#    #+#             */
-/*   Updated: 2026/02/01 16:03:57 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 19:58:46 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,29 @@
 
 int	count_lines(char *file)
 {
-	char	c;
-	int		bytes;
-	int		current_line;
 	int		fd;
+	int		count;
+	int		has_content;
+	char	c;
 
 	fd = open(file, O_RDONLY);
-	current_line = 0;
-	bytes = read(fd, &c, 1);
-	while (bytes > 0)
+	if (fd < 0)
+		return (0);
+	count = 0;
+	has_content = 0;
+	while (read(fd, &c, 1) > 0)
 	{
-		if (c == '\n')
-			current_line++;
-		bytes = read(fd, &c, 1);
+		if (c != '\n' && c != ' ')
+			has_content = 1;
+		if (c == '\n' && has_content)
+		{
+			count++;
+			has_content = 0;
+		}
 	}
-	close(fd);
-	return (current_line);
+	if (has_content)
+		count++;
+	return (close(fd), count);
 }
 
 char	*read_line(int fd)
@@ -40,14 +47,14 @@ char	*read_line(int fd)
 	int		bytes;
 
 	line = malloc(1000);
+	ft_clean_string(line);
 	i = 0;
-	if (!line)
-		return (NULL);
 	bytes = read(fd, &c, 1);
 	while (bytes > 0)
 	{
-		line[i++] = c;
-		if (c == '\n')
+		if (c != '\n')
+			line[i++] = c;
+		if (c == '\n' && line[0] != 0)
 			break ;
 		bytes = read(fd, &c, 1);
 	}
@@ -113,15 +120,13 @@ t_translate	*ft_read_file(char *file)
 	store = malloc((total + 1) * sizeof(t_translate));
 	fd = open(file, O_RDONLY);
 	j = 0;
-	if (!store || fd < 0)
-		return (NULL);
 	while (j < total)
 	{
 		line = read_line(fd);
 		store[j] = ft_parse_line(line);
-		free(line);
 		if (!store[j].number || !store[j].extensive)
 			break ;
+		free(line);
 		j++;
 	}
 	close(fd);
