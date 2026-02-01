@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpedro-s <lpedro-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 10:27:19 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 10:43:32 by lpedro-s         ###   ########.fr       */
+/*   Updated: 2026/02/01 11:00:25 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ void		ft_bzero_char(void *s, size_t n);
 void		ft_bzero_int(void *s, size_t n);
 void		ft_clean_dict(t_translate *translate_store);
 t_translate	*ft_read_file(char *file);
+void 		ft_sort_dict(t_translate *store, int size);
 
 #endif

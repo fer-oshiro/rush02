@@ -6,9 +6,11 @@
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 10:31:42 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 10:56:39 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 11:01:03 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "header.h"
 
 int	ft_strcmp(char *s1, char *s2)
 {
