@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpedro-s <lpedro-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 09:11:49 by lpedro-s          #+#    #+#             */
-/*   Updated: 2026/02/01 10:24:49 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 10:44:27 by lpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ t_translate	ft_parse_line(char *str)
 {
 	t_translate	entry;
 
-	
 	if (!ft_find_char(str, ':'))
 	{
 		entry.number = NULL;
@@ -108,7 +107,7 @@ t_translate	*ft_read_file(char *file)
 	int			total_lines;
 	t_translate	*translate_store;
 	int			j;
-	char	*line;
+	char		*line;
 
 	total_lines = count_lines(file);
 	translate_store = (t_translate *)malloc((total_lines + 1)
