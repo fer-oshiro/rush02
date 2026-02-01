@@ -6,7 +6,7 @@
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 10:27:19 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 15:46:58 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 15:49:32 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ void		ft_len_1(t_translate *dict, char num, int *g_first);
 void		ft_len_2(t_translate *dict, char num, int *g_first);
 void		ft_len_3(t_translate *dict, char num, int *g_first);
 void		ft_print_word(char *word, int *g_first);
+void		ft_print_zeros(int len, int first_len, t_translate *dict, int *g_first);
 
 #endif

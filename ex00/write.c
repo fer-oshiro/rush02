@@ -6,21 +6,11 @@
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 11:11:41 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 15:45:48 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 15:50:05 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-void	ft_print_word(char *word, int *g_first)
-{
-	if (!word)
-		return ;
-	if (!*g_first)
-		write(1, " ", 1);
-	ft_putstr(word);
-	*g_first = 0;
-}
 
 char	*ft_get_word(t_translate *dict, char *num)
 {
@@ -35,8 +25,6 @@ char	*ft_get_word(t_translate *dict, char *num)
 	}
 	return (NULL);
 }
-
-
 
 void	handle_3_digits(char *num, t_translate *dict, int *g_first)
 {
@@ -67,33 +55,13 @@ void	handle_3_digits(char *num, t_translate *dict, int *g_first)
 	}
 }
 
-void	ft_print_zeros(int len, int first_len, t_translate *dict, int *g_first)
-{
-	int	k;
-	int	power_size;
-
-	if (len > 3)
-	{
-		power_size = len - first_len + 1;
-		k = 0;
-		while (dict[k].number)
-		{
-			if (dict[k].size == power_size && dict[k].number[0] == '1')
-			{
-				ft_print_word(dict[k].extensive, g_first);
-				break ;
-			}
-			k++;
-		}
-	}
-}
-
 void	ft_first_len(int len, int *first_len)
 {
 	*first_len = len % 3;
 	if (*first_len == 0)
 		*first_len = 3;
 }
+
 void	process_block(char *num, int len, t_translate *dict, int *g_first)
 {
 	char	prefix[4];
