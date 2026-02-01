@@ -1,13 +1,13 @@
 #include "header.h"
 
-int ft_is_space(char str)
+int	ft_is_space(char str)
 {
 	return (str <= ' ' || str == 127);
 }
 
 int	ft_str_len_space(char *str, char sep)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (*str && *str != sep && *str != ' ')
@@ -18,9 +18,9 @@ int	ft_str_len_space(char *str, char sep)
 	return (len);
 }
 
-int ft_str_len(char *str)
+int	ft_str_len(char *str)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (*str)
@@ -31,7 +31,7 @@ int ft_str_len(char *str)
 	return (len);
 }
 
-int ft_find_char(char *str, char find)
+int	ft_find_char(char *str, char find)
 {
 	while (*str)
 	{
@@ -42,7 +42,7 @@ int ft_find_char(char *str, char find)
 	return (0);
 }
 
-int ft_str_num_ext_fullsize(char *str)
+int	ft_str_num_ext_fullsize(char *str)
 {
 	int index;
 	int i;

@@ -1,8 +1,8 @@
 #include "header.h"
 
-int ft_start_index(char *str)
+int	ft_start_index(char *str)
 {
-	int index;
+	int	index;
 
 	index = 0;
 	while (str[index])
@@ -16,27 +16,24 @@ int ft_start_index(char *str)
 	{
 		if (!ft_is_space(str[index]))
 			break ;
-		index ++;
+		index++;
 	}
-
 	return (index);
 }
 
-char *ft_extract_number_ext(char *str)
+char	*ft_extract_number_ext(char *str)
 {
-	char *number_ext;
-	int index;
-	int index_start;
-	int index_end;
+	char	*number_ext;
+	int		index;
+	int		index_start;
+	int		index_end;
 
 	if (!ft_number_ext_validation(str))
 		return (NULL);
 	index_start = ft_start_index(str);
 	index = ft_str_len(str);
-
 	while (ft_is_space(str[index]))
 		index--;
-
 	index_end = index + 1;
 	number_ext = (char *)malloc((index_end - index_start + 1) * sizeof(char));
 	index = 0;
@@ -45,7 +42,6 @@ char *ft_extract_number_ext(char *str)
 		number_ext[index] = str[index_start + index];
 		index++;
 	}
-
 	number_ext[index] = '\0';
 	return (number_ext);
 }
