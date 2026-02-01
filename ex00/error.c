@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpedro-s <lpedro-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 09:09:29 by lpedro-s          #+#    #+#             */
-/*   Updated: 2026/02/01 09:09:31 by lpedro-s         ###   ########.fr       */
+/*   Updated: 2026/02/01 09:24:15 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+
+
+
 
 void	ft_error_input(void)
 {
