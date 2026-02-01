@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpedro-s <lpedro-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 10:27:19 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 11:20:45 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 11:33:38 by lpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void 		ft_sort_dict(t_translate *store, int size);
 char 		*ft_get_word(t_translate *dict, char *number);
 int			ft_strcmp(char *s1, char *s2);
 void 		ft_print_expanded(char *num, t_translate *dict);
+int			ft_putstr(char *str);
 
 
 #endif
