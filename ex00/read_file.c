@@ -6,7 +6,7 @@
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 09:11:49 by lpedro-s          #+#    #+#             */
-/*   Updated: 2026/02/01 11:04:33 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 15:59:10 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,38 +104,29 @@ t_translate	ft_parse_line(char *str)
 t_translate	*ft_read_file(char *file)
 {
 	int			fd;
-	int			total_lines;
-	t_translate	*translate_store;
+	int			total;
 	int			j;
 	char		*line;
+	t_translate	*store;
 
-	total_lines = count_lines(file);
-	translate_store = (t_translate *)malloc((total_lines + 1)
-			* sizeof(t_translate));
+	total = count_lines(file);
+	store = malloc((total + 1) * sizeof(t_translate));
 	fd = open(file, O_RDONLY);
 	j = 0;
-	while (j < total_lines)
+	if (!store || fd < 0)
+		return (NULL);
+	while (j < total)
 	{
-		if (!line)
-		{
-			translate_store[j].number = NULL;
-			ft_clean_dict(translate_store);
-			close(fd);
-			return (NULL);
-		}
 		line = read_line(fd);
-		translate_store[j] = ft_parse_line(line);
+		if (!line)
+			break ;
+		store[j] = ft_parse_line(line);
 		free(line);
-		if (!translate_store[j].number
-			|| !translate_store[j].extensive)
-		{
-			ft_clean_dict(translate_store);
-			close(fd);
-			return (NULL);
-		}
-		j++;
+		if (!store[j].number || !store[j++].extensive)
+			break ;
 	}
-	ft_sort_dict(translate_store, total_lines);
 	close(fd);
-	return (translate_store);
+	if (j < total)
+		return (ft_clean_dict(store), NULL);
+	return (ft_sort_dict(store, total), store);
 }
