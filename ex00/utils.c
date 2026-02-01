@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lpedro-s <lpedro-s@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 09:21:38 by lpedro-s          #+#    #+#             */
+/*   Updated: 2026/02/01 09:22:51 by lpedro-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
 
 int	ft_is_space(char str)
@@ -44,8 +56,8 @@ int	ft_find_char(char *str, char find)
 
 int	ft_str_num_ext_fullsize(char *str)
 {
-	int index;
-	int i;
+	int	index;
+	int	i;
 
 	i = 0;
 	index = 0;
@@ -55,13 +67,11 @@ int	ft_str_num_ext_fullsize(char *str)
 			break ;
 		i++;
 	}
-
 	i++;
 	while (str[i])
 	{
 		i++;
 		index++;
 	}
-
 	return (index);
 }

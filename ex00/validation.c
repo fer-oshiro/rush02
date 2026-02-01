@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validation.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lpedro-s <lpedro-s@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/01 09:23:02 by lpedro-s          #+#    #+#             */
+/*   Updated: 2026/02/01 09:23:56 by lpedro-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
 
 int	ft_num_validation(char *str)
@@ -54,19 +66,17 @@ int	ft_number_validation(char *str)
 
 int	ft_number_ext_validation(char *str)
 {
-	int i;
-	int has_text;
+	int	i;
+	int	has_text;
 
 	i = 0;
 	has_text = 0;
-
 	while (str[i])
 	{
 		if (str[i] == ':')
 			break ;
 		i++;
 	}
-
 	i++;
 	while (str[i])
 	{
