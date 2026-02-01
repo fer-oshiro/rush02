@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aschulz- <aschulz-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 09:09:29 by lpedro-s          #+#    #+#             */
-/*   Updated: 2026/02/01 09:27:27 by aschulz-         ###   ########.fr       */
+/*   Updated: 2026/02/01 09:31:17 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-
-
-
 
 void	ft_error_input(void)
 {
@@ -25,5 +21,3 @@ void	ft_error_dict(void)
 {
 	write(1, "Dict Error\n", 12);
 }
-
-teste
