@@ -6,7 +6,7 @@
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 09:09:45 by lpedro-s          #+#    #+#             */
-/*   Updated: 2026/02/01 10:12:04 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 11:24:03 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ char	*ft_extract_number_ext(char *str)
 		number_ext[index] = str[index_start + index];
 		index++;
 	}
-	number_ext[index] = '\0';
+	number_ext[index - 1] = '\0';
 	return (number_ext);
 }
