@@ -6,7 +6,7 @@
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 09:11:49 by lpedro-s          #+#    #+#             */
-/*   Updated: 2026/02/01 10:22:02 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 10:24:49 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ t_translate	ft_parse_line(char *str)
 	return (entry);
 }
 
-int	ft_read_file(char *file)
+t_translate	*ft_read_file(char *file)
 {
 	int			fd;
 	int			total_lines;
@@ -122,7 +122,7 @@ int	ft_read_file(char *file)
 			translate_store[j].number = NULL;
 			ft_clean_dict(translate_store);
 			close(fd);
-			return (0);
+			return (NULL);
 		}
 		line = read_line(fd);
 		translate_store[j] = ft_parse_line(line);
@@ -132,10 +132,10 @@ int	ft_read_file(char *file)
 		{
 			ft_clean_dict(translate_store);
 			close(fd);
-			return (0);
+			return (NULL);
 		}
 		j++;
 	}
 	close(fd);
-	return (1);
+	return (translate_store);
 }

@@ -6,7 +6,7 @@
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 10:25:59 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 09:31:47 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 10:27:22 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	main(int argc, char **argv)
 {
-	char	*file;
-	int		num;
+	char		*file;
+	int			num;
+	t_translate	*translate_store;
 
 	if (!ft_arg_validation(argc, argv))
 	{
@@ -24,7 +25,8 @@ int	main(int argc, char **argv)
 	}
 	file = ft_file_name(argc, argv);
 	num = ft_str_to_int(argc, argv);
-	if (!ft_read_file(file))
+	translate_store = ft_read_file(file);
+	if (!translate_store)
 	{
 		ft_error_dict();
 		return (0);
