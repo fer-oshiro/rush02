@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_args.c                                         :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpedro-s <lpedro-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 09:10:26 by lpedro-s          #+#    #+#             */
-/*   Updated: 2026/02/01 15:50:02 by lpedro-s         ###   ########.fr       */
+/*   Created: 2026/02/01 15:14:25 by lpedro-s          #+#    #+#             */
+/*   Updated: 2026/02/01 15:14:29 by lpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
-
-char	*ft_file_name(int argc, char **argv)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	if (argc == 2)
-		return ("numbers.dict");
-	return (argv[1]);
-}
+	unsigned int	i;
 
-char	*ft_str_to_int(int argc, char **argv)
-{
-	char	*str;
-
-	if (argc == 2)
-		str = argv[1];
-	else
-		str = argv[2];
-	while (*str)
+	i = 0;
+	while (i < n && src[i])
 	{
-		if (*str == '0')
-		{
-			str++;
-			continue ;
-		}
-		break ;
+		dest[i] = src[i];
+		i++;
 	}
-	if (*str == '\0')
-		str--;
-	return (str);
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}	
+	return (dest);
 }

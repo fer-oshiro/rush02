@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpedro-s <lpedro-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 10:25:59 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 14:24:20 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 15:44:19 by lpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 int	main(int argc, char **argv)
 {
+	int			g_first;
 	char		*file;
 	char		*num;
 	t_translate	*translate_store;
 
+	g_first = 1;
 	if (!ft_arg_validation(argc, argv))
 	{
 		ft_error_input();
@@ -31,6 +33,5 @@ int	main(int argc, char **argv)
 		ft_error_dict();
 		return (0);
 	}
-	int g_first = 1;
 	solve(num, translate_store, &g_first);
 }
