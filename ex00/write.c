@@ -6,7 +6,7 @@
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 11:11:41 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 15:08:09 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 15:38:32 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,10 @@ void	handle_3_digits(char *num, t_translate *dict, int *g_first)
 		ft_print_word(ft_get_word(dict, num), g_first);
 		return ;
 	}
-	if (len == 2 && num[0] != '0')
+	if (len == 2)
 	{
-		ft_len_2(dict, num[0], g_first);
+		if (num[0] != '0')
+			ft_len_2(dict, num[0], g_first);
 		num++;
 		len--;
 	}
@@ -86,35 +87,33 @@ void	handle_3_digits(char *num, t_translate *dict, int *g_first)
 	}
 }
 
-void ft_print_zeros(int len, int first_len, t_translate *dict, int *g_first)
+void	ft_print_zeros(int len, int first_len, t_translate *dict, int *g_first)
 {
-	int k;
-	int power_size;
-	
+	int	k;
+	int	power_size;
+
 	if (len > 3)
+	{
+		power_size = len - first_len + 1;
+		k = 0;
+		while (dict[k].number)
 		{
-			power_size = len - first_len + 1;
-			k = 0;
-			while (dict[k].number)
+			if (dict[k].size == power_size && dict[k].number[0] == '1')
 			{
-				if (dict[k].size == power_size && dict[k].number[0] == '1')
-				{
-					ft_print_word(dict[k].extensive, g_first);
-					break ;
-				}
-				k++;
+				ft_print_word(dict[k].extensive, g_first);
+				break ;
 			}
+			k++;
 		}
+	}
 }
 
-void ft_first_len(int len, int *first_len)
+void	ft_first_len(int len, int *first_len)
 {
 	*first_len = len % 3;
 	if (*first_len == 0)
 		*first_len = 3;
 }
-
-
 
 void	solve(char *num, t_translate *dict, int *g_first)
 {
