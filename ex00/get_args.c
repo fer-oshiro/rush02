@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpedro-s <lpedro-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 09:10:26 by lpedro-s          #+#    #+#             */
-/*   Updated: 2026/02/01 12:12:12 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 15:50:02 by lpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "header.h"
 
 char	*ft_file_name(int argc, char **argv)
 {
@@ -17,7 +19,6 @@ char	*ft_file_name(int argc, char **argv)
 	return (argv[1]);
 }
 
-#include <stdio.h> 
 char	*ft_str_to_int(int argc, char **argv)
 {
 	char	*str;
@@ -26,7 +27,6 @@ char	*ft_str_to_int(int argc, char **argv)
 		str = argv[1];
 	else
 		str = argv[2];
-
 	while (*str)
 	{
 		if (*str == '0')
