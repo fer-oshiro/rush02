@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpedro-s <lpedro-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 10:25:59 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 15:44:19 by lpedro-s         ###   ########.fr       */
+/*   Updated: 2026/02/01 17:05:42 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,8 @@ int	main(int argc, char **argv)
 		ft_error_dict();
 		return (0);
 	}
-	solve(num, translate_store, &g_first);
+	if (validate(num, translate_store))
+		solve(num, translate_store, &g_first);
+	else
+		ft_error_dict();
 }
