@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpedro-s <lpedro-s@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aschulz- <aschulz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 09:09:29 by lpedro-s          #+#    #+#             */
-/*   Updated: 2026/02/01 09:09:31 by lpedro-s         ###   ########.fr       */
+/*   Updated: 2026/02/01 09:24:38 by aschulz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,5 @@ void	ft_error_dict(void)
 {
 	write(1, "Dict Error\n", 12);
 }
+
+teste
