@@ -6,7 +6,7 @@
 /*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 11:11:41 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 14:54:24 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 15:08:09 by fsayuri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,37 +86,12 @@ void	handle_3_digits(char *num, t_translate *dict, int *g_first)
 	}
 }
 
-void	solve(char *num, t_translate *dict, int *g_first)
+void ft_print_zeros(int len, int first_len, t_translate *dict, int *g_first)
 {
-	int		len;
-	int		first_len;
-	char	prefix[4] = {0};
-	int		i;
-	int		power_size;
-	int		k;
-	char	*rest;
-
-	len = ft_str_len(num);
-	if (len == 0)
-		return ;
-	if (ft_strcmp(num, "0") == 0)
-	{
-		ft_print_word(ft_get_word(dict, "0"), g_first);
-		return ;
-	}
-	first_len = len % 3;
-	if (first_len == 0)
-		first_len = 3;
-	i = 0;
-	while (i < first_len)
-	{
-		prefix[i] = num[i];
-		i++;
-	}
-	if (ft_strcmp(prefix, "000") != 0)
-	{
-		handle_3_digits(prefix, dict, g_first);
-		if (len > 3)
+	int k;
+	int power_size;
+	
+	if (len > 3)
 		{
 			power_size = len - first_len + 1;
 			k = 0;
@@ -130,6 +105,45 @@ void	solve(char *num, t_translate *dict, int *g_first)
 				k++;
 			}
 		}
+}
+
+void ft_first_len(int len, int *first_len)
+{
+	*first_len = len % 3;
+	if (*first_len == 0)
+		*first_len = 3;
+}
+
+
+
+void	solve(char *num, t_translate *dict, int *g_first)
+{
+	int		len;
+	int		first_len;
+	char	prefix[4] = {0};
+	int		i;
+	char	*rest;
+
+	len = ft_str_len(num);
+	first_len = 0;
+	if (len == 0)
+		return ;
+	if (ft_strcmp(num, "0") == 0)
+	{
+		ft_print_word(ft_get_word(dict, "0"), g_first);
+		return ;
+	}
+	ft_first_len(len, &first_len);
+	i = 0;
+	while (i < first_len)
+	{
+		prefix[i] = num[i];
+		i++;
+	}
+	if (ft_strcmp(prefix, "000") != 0)
+	{
+		handle_3_digits(prefix, dict, g_first);
+		ft_print_zeros(len, first_len, dict, g_first);
 	}
 	rest = num + first_len;
 	while (*rest == '0')
