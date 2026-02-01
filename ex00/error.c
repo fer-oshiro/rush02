@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpedro-s <lpedro-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 09:09:29 by lpedro-s          #+#    #+#             */
-/*   Updated: 2026/02/01 09:31:17 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 10:51:41 by lpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_error_input(void)
 {
-	write(1, "Error\n", 7);
+	write(1, "Error\n", 6);
 }
 
 void	ft_error_dict(void)
 {
-	write(1, "Dict Error\n", 12);
+	write(1, "Dict Error\n", 11);
 }
