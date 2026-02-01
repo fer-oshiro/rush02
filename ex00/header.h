@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsayuri- <fsayuri-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lpedro-s <lpedro-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/31 10:27:19 by fsayuri-          #+#    #+#             */
-/*   Updated: 2026/02/01 17:04:16 by fsayuri-         ###   ########.fr       */
+/*   Updated: 2026/02/01 17:49:23 by lpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-
-// apagar lib printf
-# include <stdio.h>
 
 typedef struct s_translate
 {
